@@ -138,7 +138,7 @@ for meta in meta2keep:
 for i, filepath in enumerate(json_filepaths):
 
     # print progress so i don't lose my mind
-    if (len(json_filepaths)/(i + 1)) % 100 == 0:
+    if (i + 1) % 100 == 0:
         print('Working on %i/%i' % (i + 1, len(json_filepaths)))
 
     # read article data from json
