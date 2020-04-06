@@ -139,7 +139,7 @@ for i, filepath in enumerate(json_filepaths):
 
     # print progress so i don't lose my mind
     if (len(json_filepaths)/(i + 1)) % 100 == 0:
-        print 'Working on %i/%i' % (i + 1, len(json_filepaths))
+        print('Working on %i/%i' % (i + 1, len(json_filepaths)))
 
     # read article data from json
     article_data = io.load_json(filepath)
