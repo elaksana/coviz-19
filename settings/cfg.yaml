@@ -1,0 +1,22 @@
+# base CORD-19 dataset directory
+CORD19_dir: /home/data/CORD-19
+
+# Path to CORD-19 metadata
+meta_path: /home/data/CORD-19/metadata.csv
+
+# columns in metadata csv file to write out to json for paper
+meta2keep: [url, journal, 'publish_time']
+
+output_dir: /home/data/coviz_output
+
+rseed: 3
+
+# models
+model:
+    gensim.models.word2vec.Word2Vec:
+        sg: 1
+        size: 100
+        workers: 1
+        min_count: 5
+        window: 7
+        sample: 0.003
