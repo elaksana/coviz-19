@@ -135,7 +135,11 @@ for meta in meta2keep:
 
 
 # parse articles, and store text data in corpus_df
-for filepath in json_filepaths:
+for i, filepath in enumerate(json_filepaths):
+
+    # print progress so i don't lose my mind
+    if (len(json_filepaths)/(i + 1)) % 100 == 0:
+        print 'Working on %i/%i' % (i + 1, len(json_filepaths))
 
     # read article data from json
     article_data = io.load_json(filepath)
@@ -230,6 +234,10 @@ corpus_df['x'] = word_embeddings_2d[:,0]
 corpus_df['y'] = word_embeddings_2d[:,1]
 
 
-#### Save JSON files ####
+#### Save files ####
+# JSON
 corpus_df[IMPORTANT_SECTIONS + meta2keep + ['x', 'y']].to_json(os.path.join(output_dir, 'articles.json'), 
                                                                orient='records', lines=True)
+
+# hdf
+corpus_df.to_hdf(os.path.join(output_dir, 'corpus_df.hdf'), 'data')
